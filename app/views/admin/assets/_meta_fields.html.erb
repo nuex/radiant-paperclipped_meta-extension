@@ -1,0 +1,11 @@
+<% form.edit_metadata do %>
+  <% AssetMetum.assignable_meta.each do |m| %>
+    <tr>
+      <td class="label">
+        <label for="asset[meta_attributes][][key]"><%= m.key %></label>
+        <input type="hidden" name="asset[meta_attributes][][key]" value="<%= m.key %>" />
+      </td>
+      <td class="field"><input class="textbox" id="asset_meta_<%= m.key %>" name="asset[meta_attributes][][value]" value="<%= m.value %>" /></td>
+    </tr>
+  <% end %>
+<% end %>
