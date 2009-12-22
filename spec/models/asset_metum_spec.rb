@@ -27,12 +27,6 @@ describe AssetMetum do
     end
   end
 
-  describe "methods" do
-    it 'shows metadata that can be assigned to the asset' do
-      Radiant::Config['paperclipped.asset_meta.keys'] = 'test_key, test_key_2'
-    end
-  end
-
   private
 
   def create_asset_metum(options = {})

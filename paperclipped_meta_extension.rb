@@ -13,9 +13,8 @@ class PaperclippedMetaExtension < Radiant::Extension
   def activate
     Asset.send :include, AssetMetaAssetExtensions
     Page.send :include, AssetMetaTags
-    unless admin.asset.edit.form.edit_metadata.include?('admin/assets/meta_fields')
-      admin.assets.edit.form.edit_metadata.add :meta_fields, 'admin/assets/meta_fields'
-    end
+
+    admin.asset.edit.add :extended_metadata, '/admin/assets/meta_fields', :after => 'edit_metadata'
   end
 
   def deactivate

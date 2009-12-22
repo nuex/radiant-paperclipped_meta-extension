@@ -1,11 +1,16 @@
-<% form.edit_metadata do %>
-  <% AssetMetum.assignable_meta.each do |m| %>
+<% AssetMetum.assignable_meta(@asset).each do |meta| %>
+  <% fields_for 'asset[meta_attributes][]', meta do |meta_fields| %>
     <tr>
       <td class="label">
-        <label for="asset[meta_attributes][][key]"><%= m.key %></label>
-        <input type="hidden" name="asset[meta_attributes][][key]" value="<%= m.key %>" />
+        <%= meta_fields.label :key, meta.key %>
+        <%= meta_fields.hidden_field :key %>
+        <% unless meta.new_record? %>
+          <%= meta_fields.hidden_field :id %>
+        <% end %>
       </td>
-      <td class="field"><input class="textbox" id="asset_meta_<%= m.key %>" name="asset[meta_attributes][][value]" value="<%= m.value %>" /></td>
+      <td class="field">
+        <%= meta_fields.text_field :value, :class => 'textbox' %>
+      </td>
     </tr>
   <% end %>
 <% end %>
