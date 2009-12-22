@@ -3,8 +3,8 @@
 
 class PaperclippedMetaExtension < Radiant::Extension
   version "1.0"
-  description "Describe your extension here"
-  url "http://yourwebsite.com/paperclipped_meta"
+  description "Adds metadata to paperclipped assets."
+  url "http://github.com/nuex/radiant-paperclipped_meta-extension"
 
   define_routes do |map|
     map.resources :meta, :path_prefix => '/admin/assets/:asset_id', :controller => 'admin/asset_meta'

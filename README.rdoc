@@ -1,0 +1,28 @@
+= Paperclipped Meta
+
+Assign metadata to your paperclipped assets and call them in your radiant pages with <r:assets><r:meta key="mymeta" /></r:assets>.
+
+== USAGE
+
+Add what metadata you want to be available in the "More" area (where the caption field is) by setting Radiant::Config['assets.meta.keys']. For example:
+
+  Radiant::Config['assets.meta.keys']='URL, ID'
+
+Now the URL and ID fields will appear under Caption in the admin UI. From here you can set the metadata for each asset.
+
+In your Radiant pages the following tags are available:
+
+  <r:assets title="MyAsset"><r:meta key="key" /></r:assets>
+  Renders the value for the metadata with this key.
+
+  <r:assets title="MyAsset"><r:if_meta key="only_this">...</r:if_meta></r:assets>
+  Renders the contained block only if there is a value set for the given key.
+
+== THANKS
+
+Thanks to Aissac's radiant-custom-fields-extension (http://github.com/Aissac/radiant-custom-fields-extension) for giving me some direction on the Rspec tests for this extension.
+
+== LICENSE
+
+MIT
+
