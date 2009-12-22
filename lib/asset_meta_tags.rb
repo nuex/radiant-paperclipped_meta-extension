@@ -13,7 +13,7 @@ module AssetMetaTags
   }
   tag 'assets:if_meta' do |tag|
     asset = tag.locals.asset
-    key = tag.attr.delete('key')
+    key = tag.attr['key']
     raise TagError, 'key attribute required' unless key
     meta = asset.meta.find_by_key(key)
     if meta and !meta.value.blank?
@@ -29,7 +29,7 @@ module AssetMetaTags
   }
   tag 'assets:meta' do |tag|
     asset = tag.locals.asset
-    key = tag.attr.delete('key')
+    key = tag.attr['key']
     raise TagError, 'key attribute required' unless key
     metum = asset.meta.find_by_key(key)
     raise TagError, 'no metadata found with that key for this asset' unless metum
