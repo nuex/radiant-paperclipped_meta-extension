@@ -2,6 +2,14 @@
 
 Assign metadata to your paperclipped assets and call them in your radiant pages with <r:assets><r:meta key="mymeta" /></r:assets>.
 
+== INSTALL
+
+Be sure the paperclipped extension is installed.
+
+  git submodule add git://github.com/nuex/radiant-paperclipped_meta-extension.git vendor/extensions/paperclipped_meta
+
+  rake radiant:extensions:paperclipped_meta:migrate
+
 == USAGE
 
 Add what metadata you want to be available in the "More" area (where the caption field is) by setting Radiant::Config['assets.meta.keys']. For example:
