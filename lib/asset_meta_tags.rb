@@ -22,6 +22,23 @@ module AssetMetaTags
   end
 
   desc %{
+    Renders the contained block unless the asset has data for the given key. Requires
+    a 'key' attribute.
+
+    *Usage:*
+    <pre><code><r:unless_meta [key="url"]>...</r:unless_meta></code></pre>
+  }
+  tag 'assets:unless_meta' do |tag|
+    asset = tag.locals.asset
+    key = tag.attr['key']
+    raise TagError, 'key attribute required' unless key
+    meta = asset.meta.find_by_key(key)
+    unless meta and !meta.value.blank?
+      tag.expand
+    end
+  end
+
+  desc %{
     Renders the asset's metadata value of the given key. Requires a 'key' attribute.
 
     *Usage:*
